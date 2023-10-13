@@ -1,0 +1,17 @@
+.container {
+  margin-top: 50px;
+  width: 500px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mainTitle {
+  font-size: 36px;
+  line-height: 1.2;
+  color: #004243;
+}
+.contactsTitle {
+  font-size: 28px;
+  line-height: 1.2;
+  color: #004243;
+}

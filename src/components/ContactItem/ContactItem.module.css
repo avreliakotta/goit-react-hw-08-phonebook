@@ -1,0 +1,25 @@
+.contact {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #050505;
+}
+.deleteButton {
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: teal;
+  background-color: #f8f8f8;
+  outline: none;
+  border: 1px solid rgba(5, 5, 5, 0.5);
+  border-radius: 6px;
+}
+.deleteButton:hover,
+.deleteButton:focus {
+  color: #f8f8f8;
+  background-color: teal;
+}
+.contactItem {
+  display: flex;
+  justify-content: space-between;
+}
