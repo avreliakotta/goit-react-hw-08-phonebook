@@ -3,7 +3,7 @@ import { contactsInitialState } from './initialState';
 
 import { deleteContact, fetchContacts, addContact } from './thunks';
 import {
-  handlePanding,
+  handlePending,
   handleFulfilled,
   handleRejected,
 } from '../.helpers/helpers';
@@ -14,7 +14,7 @@ const contactsSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(fetchContacts.pending, handlePanding)
+      .addCase(fetchContacts.pending, handlePending)
 
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -22,12 +22,12 @@ const contactsSlice = createSlice({
       })
       .addCase(fetchContacts.rejected, handleRejected)
 
-      .addCase(deleteContact.pending, handlePanding)
+      .addCase(deleteContact.pending, handlePending)
 
       .addCase(deleteContact.fulfilled, handleFulfilled)
       .addCase(deleteContact.rejected, handleRejected)
 
-      .addCase(addContact.pending, handlePanding)
+      .addCase(addContact.pending, handlePending)
 
       .addCase(addContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;

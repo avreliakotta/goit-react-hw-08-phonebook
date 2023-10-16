@@ -1,4 +1,4 @@
-export const handlePanding = state => {
+export const handlePending = state => {
   state.isLoading = true;
 };
 export const handleRejected = (state, { payload }) => {

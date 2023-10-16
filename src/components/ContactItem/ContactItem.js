@@ -4,7 +4,7 @@ import { deleteContact } from '../../redux/thunks';
 
 import css from './ContactItem.module.css';
 
-export const ContactItem = ({ id, name, phone }) => {
+export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   const handleDeleteContact = id => {
@@ -14,7 +14,7 @@ export const ContactItem = ({ id, name, phone }) => {
   return (
     <li className={css.contactItem}>
       <span className={css.contact}>
-        {name} : {phone}
+        {name} : {number}
       </span>
       <button
         type="button"

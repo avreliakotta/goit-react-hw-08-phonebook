@@ -1,0 +1,23 @@
+.UserMenuWrap {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.LogOutButton {
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: teal;
+  background-color: #f8f8f8;
+  outline: none;
+  border: 1px solid rgba(5, 5, 5, 0.5);
+  border-radius: 6px;
+}
+.LogOutButton:hover,
+.LogOutButton:focus {
+  color: #f8f8f8;
+  background-color: teal;
+}

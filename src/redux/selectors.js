@@ -14,3 +14,5 @@ export const selectVisibleContacts = createSelector(
       : contacts.entities;
   }
 );
+export const selectIsLoggedIn = state => state.users.isLoggedIn;
+export const selectEmail = state => state.users.user.email;

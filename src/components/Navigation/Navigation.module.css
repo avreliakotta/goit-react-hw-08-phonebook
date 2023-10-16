@@ -1,0 +1,14 @@
+.NavList {
+  display: flex;
+  gap: 15px;
+}
+.link {
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #2e2f42;
+}
+:global .active {
+  color: tomato;
+}

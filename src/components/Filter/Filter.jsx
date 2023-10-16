@@ -11,7 +11,7 @@ export const Filter = () => {
     dispatch(setFilterByName(name));
   };
   return (
-    <div>
+    <div className={css.FilterWrap}>
       <label className={css.filterLabel}>
         Find contacts by name
         <input

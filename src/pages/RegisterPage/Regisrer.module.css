@@ -1,0 +1,49 @@
+.RegisterPageTitle {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #2e2f42;
+  margin-bottom: 20px;
+}
+.RegisterPageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.Label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: teal;
+}
+.RegisterInput {
+  width: 300px;
+  height: 40px;
+  outline: none;
+  border: 1px solid #2e2f42;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  padding-left: 10px;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+}
+.RegisterButton {
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  outline: none;
+  border-radius: 6px;
+  border: 1px solid rgba(5, 5, 5, 0.5);
+  color: teal;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+.RegisterButton:hover,
+.RegisterButton:focus {
+  color: #f8f8f8;
+  background-color: teal;
+}
