@@ -59,7 +59,7 @@ export const login = createAsyncThunk(
     }
   }
 );
-export const logout = createAsyncThunk('auth/logaut', async (_, thunkAPI) => {
+export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     return await logoutUser();
   } catch (error) {
