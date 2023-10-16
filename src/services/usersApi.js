@@ -18,7 +18,7 @@ export async function logoutUser() {
   return data;
 }
 
-export const fetchCurrentUser = async token => {
+export const fetchCurrentUser = async (token, persistedToken) => {
   try {
     token.set(persistedToken);
     const { data } = await axios.get('users/current');
