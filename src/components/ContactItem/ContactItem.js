@@ -5,6 +5,7 @@ import { deleteContact } from '../../redux/thunks';
 import css from './ContactItem.module.css';
 import { Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
   const defaultTheme = createTheme();
@@ -16,9 +17,7 @@ const ContactItem = ({ id, name, number }) => {
     <li className={css.contactItem}>
       <ThemeProvider theme={defaultTheme}>
         <Typography component="h6" variant="h6">
-          {/* <span className={css.contact}> */}
           {name} : {number}
-          {/* </span> */}
         </Typography>
       </ThemeProvider>
       <button
