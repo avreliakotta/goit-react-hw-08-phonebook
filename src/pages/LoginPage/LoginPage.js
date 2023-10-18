@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../redux/thunks';
 import { toast } from 'react-toastify';
 import { Typography, TextField, Button } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+// import Avatar from '@mui/material/Avatar';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
@@ -33,6 +33,7 @@ const LoginPage = () => {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(login({ email, password }))
+      .unwrap()
       .then(() => {
         toast.success('successful  login!');
       })
@@ -54,9 +55,9 @@ const LoginPage = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
-            </Avatar>
+            </Avatar> */}
             <Typography component="h1" variant="h5">
               Login
             </Typography>

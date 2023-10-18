@@ -3,8 +3,6 @@ import { useDispatch } from 'react-redux';
 import { register } from '../../redux/thunks';
 import { toast } from 'react-toastify';
 import { Typography, TextField, Button } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
@@ -39,6 +37,7 @@ const RegisterPage = () => {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(register({ name, email, password }))
+      .unwrap()
       .then(() => {
         toast.success('Registration successful!');
       })
@@ -60,9 +59,9 @@ const RegisterPage = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
-          </Avatar>
+          </Avatar> */}
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
