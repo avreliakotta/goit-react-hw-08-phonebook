@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectEmail } from '../../redux/selectors';
 import { logout } from 'redux/thunks';
 import css from './UserMenu.module.css';
-export const UserMenu = () => {
+const UserMenu = () => {
   const email = useSelector(selectEmail);
   const dispatch = useDispatch();
   return (
@@ -18,3 +18,4 @@ export const UserMenu = () => {
     </div>
   );
 };
+export default UserMenu;

@@ -1,29 +1,35 @@
-import { ContactList } from 'components/ContactList/ContactList';
-import { ContactForm } from 'components/ContactForm/ContactForm';
+import ContactList from 'components/ContactList/ContactList';
+import ContactForm from 'components/ContactForm/ContactForm';
 import { useEffect } from 'react';
-import { Filter } from 'components/Filter/Filter';
+import Filter from 'components/Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/thunks';
 import { selectIsLoading, selectError } from 'redux/selectors';
-import css from './ContactsPage.module.css';
+import Container from '@mui/material/Container';
+import CssBaseline from '@mui/material/CssBaseline';
 
-export const ContactsPage = () => {
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const ContactsPage = () => {
   const dispatch = useDispatch();
+  const defaultTheme = createTheme();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <div className={css.container}>
-      <h1 className={css.mainTitle}>Phonebook</h1>
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
 
-      <ContactForm />
-      <h2 className={css.contactsTitle}>Contacts</h2>
-      <Filter />
-      {isLoading && <b>Request in progress...</b>}
-      {error && <p>{error.message}</p>}
-      <ContactList />
-    </div>
+        <ContactForm />
+        <Filter />
+        {isLoading && <b>Request in progress...</b>}
+        {error && <p>{error.message}</p>}
+        <ContactList />
+      </Container>
+    </ThemeProvider>
   );
 };
+export default ContactsPage;

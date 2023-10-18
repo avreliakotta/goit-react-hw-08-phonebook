@@ -1,19 +1,42 @@
 import { useSelector } from 'react-redux';
 
-import { ContactItem } from 'components/ContactItem/ContactItem';
+import ContactItem from 'components/ContactItem/ContactItem';
 import { selectVisibleContacts } from 'redux/selectors';
 
-import css from './ContactList.module.css';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 
-export const ContactList = () => {
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const ContactList = () => {
   const filteredContacts = useSelector(selectVisibleContacts);
-
+  const defaultTheme = createTheme();
   return (
-    <ul className={css.contactList}>
-      {filteredContacts &&
-        filteredContacts.map(({ id, name, number }) => (
-          <ContactItem key={id} name={name} number={number} id={id} />
-        ))}
-    </ul>
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <Box
+          sx={{
+            marginTop: 2,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <ul>
+            {filteredContacts &&
+              filteredContacts.map(({ id, name, number }) => (
+                <Box
+                  key={id}
+                  sx={{
+                    marginBottom: 1,
+                  }}
+                >
+                  <ContactItem name={name} number={number} id={id} />
+                </Box>
+              ))}
+          </ul>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 };
+export default ContactList;

@@ -1,44 +1,65 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { selectIsLoading, selectError } from 'redux/selectors';
-import { Home } from '../../pages/Home/Home';
-import { RegisterPage } from '../../pages/RegisterPage/RegisterPage';
-import { LoginPage } from '../../pages/LoginPage/LoginPage';
-import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
-import css from './App.module.css';
-import { AppBar } from 'components/AppBar/AppBar';
-import { currentUser } from '../../redux/thunks';
 
+import AppBar from 'components/AppBar/AppBar';
+import { currentUser } from '../../redux/thunks';
+import Container from 'components/Container/Container';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const Home = lazy(() => import('../../pages/Home/Home'));
+const RegisterPage = lazy(() =>
+  import('../../pages/RegisterPage/RegisterPage')
+);
+const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
+const ContactsPage = lazy(() =>
+  import('../../pages/ContactsPage/ContactsPage')
+);
+const PrivateRoute = lazy(() => import('components/PrivateRoute'));
+const PublicRoute = lazy(() => import('components/PublicRoute'));
 export const App = () => {
   const dispatch = useDispatch();
-  // const isLoading = useSelector(selectIsLoading);
-  // const error = useSelector(selectError);
+
   useEffect(() => {
     dispatch(currentUser());
   }, [dispatch]);
   return (
-    <div className={css.Container}>
+    <Container>
+      <ToastContainer autoClose={3000} position="top-right" />
       <AppBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="*" element={<div>NotFound </div>} />
-      </Routes>
-    </div>
-
-    // <div className={css.container}>
-    //   <h1 className={css.mainTitle}>Phonebook</h1>
-
-    //   <ContactForm />
-    //   <h2 className={css.contactsTitle}>Contacts</h2>
-    //   <Filter />
-    //   {isLoading && <b>Request in progress...</b>}
-    //   {error && <p>{error.message}</p>}
-    //   <ContactList />
-    // </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute>
+                <ContactsPage />
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<div>NotFound </div>} />
+        </Routes>
+      </Suspense>
+    </Container>
   );
 };
