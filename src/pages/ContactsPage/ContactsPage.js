@@ -7,7 +7,7 @@ import { fetchContacts } from 'redux/thunks';
 import { selectIsLoading, selectError } from 'redux/selectors';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
-
+import CircularProgress from '@mui/material/CircularProgress';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const ContactsPage = () => {
@@ -25,7 +25,8 @@ const ContactsPage = () => {
 
         <ContactForm />
         <Filter />
-        {isLoading && <b>Request in progress...</b>}
+        {isLoading && <CircularProgress />}
+
         {error && <p>{error.message}</p>}
         <ContactList />
       </Container>

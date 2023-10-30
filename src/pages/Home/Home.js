@@ -1,5 +1,9 @@
-import css from 'pages/Home/Home.module.css';
+import { Typography } from '@mui/material';
 const Home = () => {
-  return <h1 className={css.homeTitle}>Welcome! Glad to see you here!</h1>;
+  return (
+    <Typography variant="h4" component="h1" mt={5} align="center">
+      Welcome! Glad to see you here!
+    </Typography>
+  );
 };
 export default Home;

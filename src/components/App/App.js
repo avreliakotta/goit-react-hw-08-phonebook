@@ -9,7 +9,7 @@ import Container from 'components/Container/Container';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import CircularProgress from '@mui/material/CircularProgress';
 const Home = lazy(() => import('../../pages/Home/Home'));
 const RegisterPage = lazy(() =>
   import('../../pages/RegisterPage/RegisterPage')
@@ -30,7 +30,8 @@ export const App = () => {
     <Container>
       <ToastContainer autoClose={3000} position="top-right" />
       <AppBar />
-      <Suspense fallback={<div>Loading...</div>}>
+      {/* <Suspense fallback={<Loading...</div>}> */}
+      <Suspense fallback={<CircularProgress />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
